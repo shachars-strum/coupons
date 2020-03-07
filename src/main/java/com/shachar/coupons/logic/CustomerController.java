@@ -34,12 +34,14 @@ public class CustomerController {
 				System.out.println(customer);
 
 		try {
-			return this.customersDao.save(customer).getId();
+			 this.customersDao.save(customer);
 
 		} catch (Exception e) {
 			//			usersController.deleteUser(userId);
 			throw new ApplicationException(ErrorTypes.FAIL_TO_CREATE_CUSTOMER, "Failed to create cutomer", e);
 		}
+		
+		return customer.getId();
 	}
 
 	private void customerValidations(Customer customer) throws ApplicationException {
